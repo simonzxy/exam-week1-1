@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>考核测试（第一周）</title>
+
+</head>
+<body>
+<h1>考核测试（第一周）</h1>
+
+<h2>试前说明</h2>
+
+<ul>
+<li>收到考核邮件及做完试题后请分别回复邮件。（交卷时附上 github 项目链接）</li>
+<li>每道试题做完后请提交信息至 github 账号本次考核项目。</li>
+<li>顺序做题。</li>
+<li>考核时间: 14:00 - 19:00。</li>
+<li>试卷会在 14:00 左右通过邮件发出，14:30 前有任何疑惑请在微信里及时交流。</li>
+</ul>
+
+
+<h2>github 提交约束</h2>
+
+<ul>
+<li>提交信息以增加（add）、优化（optimized）、修正（fixed)开头。（冒号空格，然后是提交信息）</li>
+<li><code>git commit</code> 提交内容,请勿擅写。</li>
+<li>允许重复提交。（例如提交第一题后，发现有 bug 或更好的实现方式，可以提交修正或优化）</li>
+<li>所有 git 操作请使用命令行。</li>
+</ul>
+
+
+<h2>评分规则</h2>
+
+<ul>
+<li>百分制，六十分合格。</li>
+<li>乱序做题，不合格。</li>
+<li>逾期交卷，不合格。</li>
+<li>github 提交乱写，不合格。</li>
+<li>代码整洁度占 10%。</li>
+<li>平时表现占附加分 10分。（合格者忽略此项）</li>
+</ul>
+
+
+<h2>试题</h2>
+
+<h3>github（5 分）</h3>
+
+<ol>
+<li>创建项目，项目名称: exam-week1-1。</li>
+<li>包含 README.md、.gitignore, license 选择 GPL。</li>
+<li>同步至本地。</li>
+</ol>
+
+
+<p><em>说明:后面试题均在此项目文件夹下完成</em></p>
+
+<h3>markdown（25 分）</h3>
+
+<ol>
+<li>把<strong>本次考核试卷</strong>翻译为对应的 html 格式，写入文件: exam-week1.html。</li>
+<li>github 提交。（add: markdown 翻译为 html）</li>
+</ol>
+
+
+<h3>javascript（10 分）</h3>
+
+<ol>
+<li>创建文件: javascript.html，界面上两个输入框、一个按钮，水平对齐（忽略样式）。</li>
+<li>功能: 第一个输入框写任何内容，点击按钮，则第二个输入框显示第一个输入框内容，第一个输入框内容清空。</li>
+<li>github 提交。（add: javascript输入框内容传递）</li>
+</ol>
+
+
+<h3>视图生命周期（5 分）</h3>
+
+<ol>
+<li>创建文件: view-life-recycle.md。</li>
+<li>android/ios 视图生命周期列表，及您的理解使用 markdown 表达出来。</li>
+<li>github 提交。（add: 视图生命周期及理解）</li>
+</ol>
+
+
+<h3>沙盒文件结构（5 分）</h3>
+
+<ol>
+<li>创建文件: sandbox-file-structure.md。</li>
+<li>应用沙盒文件结构，及您的理解使用 markdown 表达出来。</li>
+<li>github 提交。（add: 沙盒文件结构及理解）</li>
+</ol>
+
+
+<h3>javascript &amp; native 交互（25 分）</h3>
+
+<ul>
+<li>创建 android/ios 项目，名称: js-with-native。</li>
+<li>拷贝 javascript.html 文件至项目中。</li>
+<li>视图<strong>将要显示前</strong>，判断沙盒中是否存在 javascritp.html 文件，若不存在，则从项目 assets 文件夹下拷贝。</li>
+<li>使用 webview 加载沙盒中 javascript.html 文件。</li>
+<li>点击 html 界面中按钮时，将 html 第一个输入框内容传给 native 处理，并以弹出框显示。(当前输入框内容为空时，显示’请输入内容')</li>
+<li><p>github 提交。（add: javascript &amp; native 交互）</p></li>
+<li><p>模拟器界面截图，保存至: exam-week1-1/images/android-javascript-native.png。(图片格式不限)</p></li>
+<li>更新说明文档 exam-week1-1/README.md, 显示上述截图。</li>
+<li>github 提交。（add: javascript &amp; native 交互，模拟器界面截图）</li>
+</ul>
+
+
+<h3>pdf展示 （15 分）（仅 anroid）</h3>
+
+<p><em>说明: 继续在js-with-native项目中进行。</em></p>
+
+<ul>
+<li>当html界面中第一个输入框内容包含 'pdf' 时，android 弹出框显示输入框内容, 点击[确定]，则跳转至新视图。</li>
+<li>判断沙盒中是否存在 hello-world.pdf 文件，若不存在，则根据<a href="http://123.59.75.85:8080/yhportal/appClientReport/nationalSalesBrief.pdf">pdf链接</a>代码下载。</li>
+<li>新视图中加载 hello-world.pdf 文件。</li>
+<li><p>github 提交。（add: pdf展示）</p></li>
+<li><p>模拟器展示pdf界面截图，保存至: exam-week1-1/images/android-sandbox-pdf.png。(图片格式不限)</p></li>
+<li>更新说明文档 exam-week1-1/README.md, 显示上述截图。</li>
+<li>github 提交。（add: pdf展示，模拟器界面截图）</li>
+</ul>
+
+
+<h3>视图跳转（15 分）（仅 ios）</h3>
+
+<p><em>说明: 继续在js-with-native项目中进行。</em></p>
+
+<h4>url</h4>
+
+<ul>
+<li>当 html 界面中第一个输入框内容以 http[s]:// 开头时，ios 弹出框显示输入框内容，点击[确定]，则跳转至新视图使用webview加载该链接。（html界面中第一个输入框内容）</li>
+<li><p>github 提交。（add: url 加载）</p></li>
+<li><p>模拟器界面截图，保存至: exam-week1-1/images/ios-url-webview.png。(图片格式不限)</p></li>
+<li>更新说明文档 exam-week1-1/README.md, 显示上述截图。</li>
+<li>github 提交。（add: rl 加载，模拟器界面截图）</li>
+</ul>
+
+
+<h4>pdf</h4>
+
+<ul>
+<li>当 html 界面中第一个输入框内容以 http[s]:// 开头, 并以 .pdf 结尾时。</li>
+<li>判断沙盒中是否存在 hello-world.pdf 文件，若不存在，则根据<a href="http://123.59.75.85:8080/yhportal/appClientReport/nationalSalesBrief.pdf">pdf链接</a>代码下载。</li>
+<li>新视图中加载 hello-world.pdf 文件。</li>
+<li><p>github 提交。（add: pdf 下载并展示）</p></li>
+<li><p>模拟器界面截图，保存至: exam-week1-1/images/ios-pdf-webview.png。(图片格式不限)</p></li>
+<li>更新说明文档 exam-week1-1/README.md, 显示上述截图。</li>
+<li>github 提交。（add: pdf 下载并展示，模拟器界面截图）</li>
+</ul>
+
+
+<h3>综合 （10 分）</h3>
+
+<ul>
+<li>github 项目设置。</li>
+<li><code>git commit</code> 信息格式。</li>
+<li>文件（夹）名称格式。</li>
+<li>README.md 清空无用信息，更新内容时，使用有序列表样式。</li>
+</ul>
+
+</body>
+</html>
