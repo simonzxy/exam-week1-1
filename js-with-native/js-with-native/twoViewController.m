@@ -20,8 +20,8 @@
     // Do any additional setup after loading the view.
     UIWebView *web1 = [[UIWebView alloc] init];
     CGFloat webW = [UIScreen mainScreen].bounds.size.width;
-    CGFloat webH = [UIScreen mainScreen].bounds.size.height-20;
-    web1.frame = CGRectMake(0, 20, webW, webH);
+    CGFloat webH = [UIScreen mainScreen].bounds.size.height;
+    web1.frame = CGRectMake(0, 0, webW, webH);
     NSString *str = [NSString stringWithFormat:@"http://%@",_twourl];
     NSLog(@"%@",str);
     NSURL *url = [NSURL URLWithString:str];
