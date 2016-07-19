@@ -13,6 +13,7 @@
 		C14C494E1D3E18A700B1D76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C14C494C1D3E18A700B1D76B /* Main.storyboard */; };
 		C14C49531D3E18A700B1D76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C14C49511D3E18A700B1D76B /* LaunchScreen.storyboard */; };
 		C14C495D1D3E2A5D00B1D76B /* javascript.html in Resources */ = {isa = PBXBuildFile; fileRef = C14C495C1D3E2A5D00B1D76B /* javascript.html */; };
+		C14C49601D3E377A00B1D76B /* twoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C495F1D3E377A00B1D76B /* twoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		C14C49521D3E18A700B1D76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C14C49541D3E18A700B1D76B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C14C495C1D3E2A5D00B1D76B /* javascript.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = javascript.html; sourceTree = "<group>"; };
+		C14C495E1D3E377A00B1D76B /* twoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twoViewController.h; sourceTree = "<group>"; };
+		C14C495F1D3E377A00B1D76B /* twoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = twoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				C14C49471D3E18A700B1D76B /* AppDelegate.m */,
 				C14C49491D3E18A700B1D76B /* ViewController.h */,
 				C14C494A1D3E18A700B1D76B /* ViewController.m */,
+				C14C495E1D3E377A00B1D76B /* twoViewController.h */,
+				C14C495F1D3E377A00B1D76B /* twoViewController.m */,
 				C14C494C1D3E18A700B1D76B /* Main.storyboard */,
 				C14C49511D3E18A700B1D76B /* LaunchScreen.storyboard */,
 				C14C49541D3E18A700B1D76B /* Info.plist */,
@@ -152,6 +157,7 @@
 				C14C494B1D3E18A700B1D76B /* ViewController.m in Sources */,
 				C14C49481D3E18A700B1D76B /* AppDelegate.m in Sources */,
 				C14C49451D3E18A700B1D76B /* main.m in Sources */,
+				C14C49601D3E377A00B1D76B /* twoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

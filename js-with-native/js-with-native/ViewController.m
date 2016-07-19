@@ -7,8 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "twoViewController.h"
 
 @interface ViewController ()<UIWebViewDelegate>
+@property(nonatomic,strong)twoViewController *twovc;
 
 @end
 
@@ -28,6 +30,9 @@
     [web loadRequest:request];
     [self.view addSubview:web];
     web.delegate = self;
+    _twovc =[[twoViewController alloc] init];
+    
+    
     
 }
 
@@ -37,7 +42,7 @@
     NSString *document = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
 
     NSString *path = [[NSBundle mainBundle] pathForResource:@"javascript" ofType:@"html"];
-    NSLog(@"%@",path);
+
  
     if (![mgr fileExistsAtPath:document]) {
         
@@ -72,7 +77,19 @@
         {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:te preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+           
+            if ([te hasPrefix:@"http//"]) {
+                NSLog(@"%@---",te);
+                NSString *array = [te componentsSeparatedByString:@"//"][1];
+                NSLog(@"%@",array);
+              
+                _twovc.twourl = array;
+                [self presentViewController:_twovc animated:YES completion:nil];
+                
+                
+                
             
+            }
         }];
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];
