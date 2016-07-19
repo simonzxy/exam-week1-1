@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function btn() {
+            var putone = document.getElementById('put1');
+            var puttwo = document.getElementById('put2');
+            puttwo.value = putone.value ;
+            putone.value =null;
+        }
+    </script>
+</head>
+<body style="text-align: center">
+<input  id="put1" type="text"/>
+<input id="put2" type="text"/>
+<button onclick="btn()">click</button>
+
+</body>
+</html>
