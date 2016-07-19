@@ -6,3 +6,6 @@
 ![image](http://ww3.sinaimg.cn/large/006tNc79gw1f5zd707bwij30kq0nomy1.jpg)
 
 
+##URL加载截图
+
+![image](http://ww2.sinaimg.cn/large/006tNc79gw1f5zftg1j91j30k80w477g.jpg)
