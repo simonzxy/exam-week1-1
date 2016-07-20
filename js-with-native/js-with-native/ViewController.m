@@ -8,9 +8,12 @@
 
 #import "ViewController.h"
 #import "twoViewController.h"
+#import <JavaScriptCore/JavaScriptCore.h>
+
+
 
 @interface ViewController ()<UIWebViewDelegate>
-@property(nonatomic,strong)twoViewController *twovc;
+@property(nonatomic,strong)NSString *jsurl;
 
 @end
 
@@ -18,22 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //创建webview
-    UIWebView *web = [[UIWebView alloc] init];
-    CGFloat webW = [UIScreen mainScreen].bounds.size.width;
-    CGFloat webH = [UIScreen mainScreen].bounds.size.height-20;
-    web.frame = CGRectMake(0, 20, webW, webH);
-    //获取本地HTML文件路径
-    NSString* htmlpath = [[NSBundle mainBundle] pathForResource:@"javascript" ofType:@"html"];
-    NSURL* url = [NSURL fileURLWithPath:htmlpath];
-    NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
-    [web loadRequest:request];
-    [self.view addSubview:web];
-    web.delegate = self;
-    _twovc =[[twoViewController alloc] init];
-    
-    
-    
+
     
 }
 
@@ -41,14 +29,24 @@
     NSFileManager *mgr = [NSFileManager defaultManager];
     //沙盒document文件夹路径
     NSString *document = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"javascript" ofType:@"html"];
-
- 
-    if (![mgr fileExistsAtPath:document]) {
-        
-        [mgr copyItemAtPath:path toPath:document error:nil];
+    _jsurl = [document stringByAppendingPathComponent:@"javascript.html"];
+   //判断沙盒是否存在js文件
+    if (![mgr fileExistsAtPath:_jsurl]) {
+         NSString *path = [[NSBundle mainBundle] pathForResource:@"javascript" ofType:@"html"];
+        [mgr copyItemAtPath:path toPath:_jsurl error:nil];
     }
+    
+    //创建webview
+    UIWebView *web = [[UIWebView alloc] init];
+    CGFloat webW = [UIScreen mainScreen].bounds.size.width;
+    CGFloat webH = [UIScreen mainScreen].bounds.size.height-20;
+    web.frame = CGRectMake(0, 20, webW, webH);
+    //获取沙盒HTML文件路径
+    NSURL* url = [NSURL fileURLWithPath:_jsurl];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
+    [web loadRequest:request];
+    [self.view addSubview:web];
+    web.delegate = self;
    
 }
 
@@ -83,14 +81,10 @@
                 NSLog(@"%@---",te);
                 NSString *array = [te componentsSeparatedByString:@"//"][1];
                 NSLog(@"%@",array);
-              
-                _twovc.twourl = array;
-                [self presentViewController:_twovc animated:YES completion:nil];
-                
-                
-                
-            
-            }
+                twoViewController *twovc =[[twoViewController alloc] init];
+                twovc.twourl = array;
+                [self presentViewController:twovc animated:YES completion:nil];
+                }
         }];
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];

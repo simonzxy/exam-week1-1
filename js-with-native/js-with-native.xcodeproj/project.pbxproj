@@ -14,6 +14,7 @@
 		C14C49531D3E18A700B1D76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C14C49511D3E18A700B1D76B /* LaunchScreen.storyboard */; };
 		C14C495D1D3E2A5D00B1D76B /* javascript.html in Resources */ = {isa = PBXBuildFile; fileRef = C14C495C1D3E2A5D00B1D76B /* javascript.html */; };
 		C14C49601D3E377A00B1D76B /* twoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C495F1D3E377A00B1D76B /* twoViewController.m */; };
+		C1DE7B1D1D3F79B100CB3FD0 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DE7B1C1D3F79B100CB3FD0 /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		C14C495C1D3E2A5D00B1D76B /* javascript.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = javascript.html; sourceTree = "<group>"; };
 		C14C495E1D3E377A00B1D76B /* twoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twoViewController.h; sourceTree = "<group>"; };
 		C14C495F1D3E377A00B1D76B /* twoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = twoViewController.m; sourceTree = "<group>"; };
+		C1DE7B1C1D3F79B100CB3FD0 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1DE7B1D1D3F79B100CB3FD0 /* JavaScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +48,7 @@
 		C14C49371D3E18A700B1D76B = {
 			isa = PBXGroup;
 			children = (
+				C1DE7B1C1D3F79B100CB3FD0 /* JavaScriptCore.framework */,
 				C14C49421D3E18A700B1D76B /* js-with-native */,
 				C14C49411D3E18A700B1D76B /* Products */,
 			);
