@@ -13,7 +13,9 @@
 
 
 @interface ViewController ()<UIWebViewDelegate>
+
 @property(nonatomic,strong)NSString *jsurl;
+@property(nonatomic,strong)JSContext *context;
 
 @end
 
@@ -26,6 +28,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    //文件管理
     NSFileManager *mgr = [NSFileManager defaultManager];
     //沙盒document文件夹路径
     NSString *document = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
@@ -37,6 +40,14 @@
     }
     
     //创建webview
+    [self  loadwebview];
+
+   
+}
+
+//创建webview
+-(void)loadwebview
+{
     UIWebView *web = [[UIWebView alloc] init];
     CGFloat webW = [UIScreen mainScreen].bounds.size.width;
     CGFloat webH = [UIScreen mainScreen].bounds.size.height-20;
@@ -47,50 +58,66 @@
     [web loadRequest:request];
     [self.view addSubview:web];
     web.delegate = self;
-   
 }
+
+//webview代理方法
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    //获取webview中的jscontext，js调用oc
+    _context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    __weak typeof(self) weakSelf = self;
+    
+    _context[@"print"] = ^(NSString *string){
+        NSLog(@"%@",string);
+        if (string.length ==0)
+        {
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"请输入内容" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert addAction:action];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [weakSelf presentViewController:alert animated:YES completion:nil];
+                
+            });
+        }else{
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:string preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+                if (([string hasPrefix:@"http://"])||([string hasPrefix:@"https://"])) {
+                    
+                    twoViewController *twovc =[[twoViewController alloc] init];
+                    twovc.twourl = string;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [weakSelf presentViewController:twovc animated:YES completion:nil];
+                        
+                    });
+                }
+            }];
+            [alert addAction:action];
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [weakSelf presentViewController:alert animated:YES completion:nil];
+                
+            });
+        }
+        
+    };
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
 }
--(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
 
-    NSString *url = request.URL.absoluteString;
-
-    if ([url hasPrefix:@"zhu://"])
-    {
-        NSString *te =[url substringFromIndex:6];
-        NSLog(@"%@",te);
-        //判断输入是否为空
-        if (te.length==0) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"请输入内容" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-        [alert addAction:action];
-        [self presentViewController:alert animated:YES completion:nil];
-        }
-        else
-        {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:te preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-           
-            if ([te hasPrefix:@"http//"]) {
-                NSLog(@"%@---",te);
-                NSString *array = [te componentsSeparatedByString:@"//"][1];
-                NSLog(@"%@",array);
-                twoViewController *twovc =[[twoViewController alloc] init];
-                twovc.twourl = array;
-                [self presentViewController:twovc animated:YES completion:nil];
-                }
-        }];
-        [alert addAction:action];
-        [self presentViewController:alert animated:YES completion:nil];
-        }}
-    return YES;
-    
-}
 
 @end

@@ -22,9 +22,8 @@
     CGFloat webW = [UIScreen mainScreen].bounds.size.width;
     CGFloat webH = [UIScreen mainScreen].bounds.size.height;
     web1.frame = CGRectMake(0, 0, webW, webH);
-    NSString *str = [NSString stringWithFormat:@"http://%@",_twourl];
-    NSLog(@"%@",str);
-    NSURL *url = [NSURL URLWithString:str];
+    NSLog(@"%@",_twourl);
+    NSURL *url = [NSURL URLWithString:_twourl];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     [web1 loadRequest:request];
     [self.view addSubview:web1];
