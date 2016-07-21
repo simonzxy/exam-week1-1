@@ -9,7 +9,7 @@
 #import "twoViewController.h"
 
 @interface twoViewController ()
-
+@property(nonatomic,strong)UIWebView *web1;
 
 @end
 
@@ -18,20 +18,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIWebView *web1 = [[UIWebView alloc] init];
+    _web1 = [[UIWebView alloc] init];
     CGFloat webW = [UIScreen mainScreen].bounds.size.width;
     CGFloat webH = [UIScreen mainScreen].bounds.size.height;
-    web1.frame = CGRectMake(0, 0, webW, webH);
+    _web1.frame = CGRectMake(0, 0, webW, webH);
     NSLog(@"%@",_twourl);
+    //判断是否含有前缀为http后缀为.pdf的URL输入
+    if ([_twourl containsString:@".pdf"]) {
+        [self loadpdf];
+        
+    }else{
     NSURL *url = [NSURL URLWithString:_twourl];
-    NSURLRequest* request = [NSURLRequest requestWithURL:url];
-    [web1 loadRequest:request];
-    [self.view addSubview:web1];
+        NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    
+    [_web1 loadRequest:request];
+    [self.view addSubview:_web1];
+    }
     
  
 }
+//在此方法中作出相关操作（用NSURLsession进行文件下载缓存）
+-(void)loadpdf{
+    NSString *pdf = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSLog(@"%@",pdf);
+    NSString *pdfpath =[pdf stringByAppendingPathComponent:@"hello-world.pdf"];
+    NSFileManager *filemanager = [NSFileManager defaultManager];
+    if (![filemanager fileExistsAtPath:pdfpath]) {
+        NSURL *url = [NSURL URLWithString:@"http://123.59.75.85:8080/yhportal/appClientReport/nationalSalesBrief.pdf"];
+     
+        NSURLSessionDataTask *dataa = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            NSURL *urll = [NSURL URLWithString:@"http://123.59.75.85:8080/yhportal/appClientReport/nationalSalesBrief.pdf"];
+            NSURLRequest* request1 = [NSURLRequest requestWithURL:urll];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                
+                [_web1 loadRequest:request1];
+                [self.view addSubview:_web1];
+                _web1.scrollView.scrollEnabled = YES;
+                
+            });
+            }];
+        [dataa resume];
+    }}
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

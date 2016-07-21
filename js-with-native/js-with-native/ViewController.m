@@ -16,6 +16,7 @@
 
 @property(nonatomic,strong)NSString *jsurl;
 @property(nonatomic,strong)JSContext *context;
+@property(nonatomic,strong)twoViewController *twovc;
 
 @end
 
@@ -66,9 +67,9 @@
     _context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     __weak typeof(self) weakSelf = self;
     
-    _context[@"print"] = ^(NSString *string){
-        NSLog(@"%@",string);
-        if (string.length ==0)
+    _context[@"print"] = ^(NSString *str){
+        NSLog(@"%@",str);
+        if (str.length ==0)
         {
             
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"请输入内容" preferredStyle:UIAlertControllerStyleAlert];
@@ -83,18 +84,23 @@
             });
         }else{
             
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:string preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:str preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 
-                if (([string hasPrefix:@"http://"])||([string hasPrefix:@"https://"])) {
+                if (([str hasPrefix:@"http://"])||([str hasPrefix:@"https://"])) {
+
                     
-                    twoViewController *twovc =[[twoViewController alloc] init];
-                    twovc.twourl = string;
+                    
+                    
+                    _twovc =[[twoViewController alloc] init];
+                    _twovc.twourl = str;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
-                        [weakSelf presentViewController:twovc animated:YES completion:nil];
+                        [weakSelf presentViewController:_twovc animated:YES completion:nil];
                         
                     });
+                    
+                  
                 }
             }];
             [alert addAction:action];
@@ -111,6 +117,10 @@
     
 }
 
+
+    
+    
+    
 
 
 - (void)didReceiveMemoryWarning {
